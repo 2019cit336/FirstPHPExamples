@@ -1,0 +1,23 @@
+<?php
+// Create the connection variable, referring to the database.
+
+$link = mysqli_connect("localhost", "root", "root", "demo");
+ 
+// Check for successful connection.
+
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
+// Create the insertion command, and attempt to execute. Display error if unsuccessful.
+
+$sql = "INSERT INTO persons (first_name, last_name, email_address) VALUES ('Wormy', 'VonWormenstein', 'email@email.com')";
+if(mysqli_query($link, $sql)){
+    echo "Records added successfully.";
+} else{
+    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+}
+
+// Either way, close the connection.
+mysqli_close($link);
+?>
